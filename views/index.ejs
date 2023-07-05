@@ -1,0 +1,41 @@
+<!-- views/index.ejs -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Food Recipe Website</title>
+
+    <link rel="icon" href="icon/icon.ico">
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome to the Food Recipe Website</h1>
+    </div>
+    <head>
+  <body>
+      <h2>Recipe Search</h2>
+    <form action="/recipes" method="GET">
+      <input type="text" name="foodName" placeholder="Enter a Food Name">
+      <button type="submit">Search</button>
+    </form>
+
+    <% if (recipes && recipes.length > 0) { %>
+      <h3>Search Results:</h3>
+      <ul>
+        <% for (let i = 0; i < recipes.length; i++) { %>
+          <li>
+            <h4><%= recipes[i].title %></h4>
+            <p><%= recipes[i].instructions %></p>
+          </li>
+        <% } %>
+      </ul>
+    <% } else if (recipes && recipes.length === 0) { %>
+      <p>No recipes found.</p>
+    <% } %>
+
+    <% if (!recipes) { %>
+      <p>Perform a search to see recipe results.</p>
+    <% } %>
+  </body>
+</html>
